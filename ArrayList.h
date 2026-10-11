@@ -30,6 +30,20 @@ public:
         ++size_;
     }
 
+    void addAnywhere(int position, T* value) override {
+        if (size_ >= CAPACITY) {
+            std::cout << "ArrayList is full." << std::endl;
+            return;
+        }
+        for (int i = size_; i > position; --i) {
+            data_[i] = data_[i - 1];
+        }
+        data_[position] = value;
+        ++size_;
+
+        // TODO
+    }
+
     void deleteFront() override {
         if (size_ == 0) {
             std::cout << "ArrayList is empty." << std::endl;
@@ -40,6 +54,18 @@ public:
             data_[i] = data_[i + 1];
         }
         --size_;
+    }
+
+    void deleteAnywhere(int position) override {
+        //  TODO
+    }
+
+    void reverse() override {
+        // TODO
+    }
+
+    void concat(T* value) override {
+        // TODO
     }
 
     T* getFront() const override {
