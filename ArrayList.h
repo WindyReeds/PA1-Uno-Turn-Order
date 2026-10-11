@@ -36,12 +36,10 @@ public:
             return;
         }
         for (int i = size_; i > position; --i) {
-            data_[i] = data_[i - 1];
+            data_[i + 1] = data_[i];
         }
         data_[position] = value;
         ++size_;
-
-        // TODO
     }
 
     void deleteFront() override {
@@ -57,15 +55,49 @@ public:
     }
 
     void deleteAnywhere(int position) override {
-        //  TODO
+        if (size_ == 0) {
+            std::cout << "ArrayList is empty." << std::endl;
+            return;
+        }
+        delete data_[position];
+        for (int i = position + 1; i < size_; ++i) {
+            data_[i] = data_[i + 1];
+        }
+        --size_;
     }
 
     void reverse() override {
-        // TODO
+        int temp;
+        int j = size_ - 1;
+
+        for (int i = 0; i < size_; ++i) {
+            temp = data_[i];
+            data_[i] = data_[j];
+            data_[j] = temp;
+            --j;
+            if (i >= j) {
+                break;
+            }
+        }
     }
 
-    void concat(T* value) override {
-        // TODO
+    void concat(List<T>* other) override {
+        int concatSize = size_ + other->size();
+
+        if (dynamic_cast<ArrayList>(other) == nullptr) {
+            std::cout << "Wrong class type! Should be ArrayList" << std::endl;
+            return;
+        }
+        if (concatSize >= CAPACITY) {
+            std::cout << "ArrayList would overflow." << std::endl;
+            return;
+        }
+
+        int j = 0;
+        for (int i = size_ + 1; i < concatSize; ++i) {
+            this->data_[i] = other->data_[j];
+            ++j;
+        }
     }
 
     T* getFront() const override {

@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 4.3)
+cmake_minimum_required(VERSION 3.26)
 project(PA1_Uno_Turn_Order)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories(.)
-
-add_executable(PA1_Uno_Turn_Order main.cpp
+add_executable(PA1_Uno_Turn_Order
+        main.cpp
         ArrayList.h
         Data.h
         LinkedList.h

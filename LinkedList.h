@@ -33,6 +33,10 @@ public:
         ++size_;
     }
 
+    void addAnywhere(int position, T* value) override {
+        // TODO
+    }
+
     void deleteFront() override {
         if (head_ == nullptr) {
             std::cout << "LinkedList is empty." << std::endl;
@@ -48,6 +52,10 @@ public:
         --size_;
     }
 
+    void deleteAnywhere(int position) override {
+        // TODO
+    }
+
     T* getFront() const override {
         if (head_ == nullptr) {
             return nullptr;
@@ -57,6 +65,14 @@ public:
 
     bool isEmpty() const override {
         return head_ == nullptr;
+    }
+
+    void reverse() override {
+        // TODO
+    }
+
+    void concat(List<T>* other) override {
+        // TODO
     }
 
     int size() const override {
